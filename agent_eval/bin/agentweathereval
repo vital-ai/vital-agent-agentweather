@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python -m haley_eval_cmd.haley_eval_cmd "$@"
