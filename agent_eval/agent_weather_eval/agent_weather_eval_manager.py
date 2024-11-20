@@ -1,9 +1,9 @@
 import json
+import logging
 
 from com_vitalai_aimp_domain.model.AIMPIntent import AIMPIntent
 from com_vitalai_aimp_domain.model.AgentMessageContent import AgentMessageContent
 from com_vitalai_aimp_domain.model.UserMessageContent import UserMessageContent
-from com_vitalai_haleyai_question_domain.model.KGPropertyMap import KGPropertyMap
 from vital_ai_vitalsigns.utils.uri_generator import URIGenerator
 from vital_ai_vitalsigns.vitalsigns import VitalSigns
 
@@ -17,15 +17,17 @@ class HaleyAgentEvalManager:
 
         vs = VitalSigns()
 
+        logger = logging.getLogger("HaleyAgentEvalLogger")
+
         action = row.get('Action', None)
         message_class = row.get('MessageClass', None)
         intent_type = row.get('IntentType', None)
-        print(f"Sending Message: {message_class}")
+        logger.info(f"Sending Message: {message_class}")
 
         message_uri = row.get('MessageUri', None)
         message_text = row.get('MessageText', None)
 
-        print(f"Message Text: {message_text}")
+        logger.info(f"Message Text: {message_text}")
 
         aimp_intent = AIMPIntent()
         aimp_intent.URI = message_uri
@@ -61,7 +63,7 @@ class HaleyAgentEvalManager:
                     agent_text = go.text
                     message_text = str(agent_text)
 
-        print(f"Agent Text: {message_text}")
+        logger.info(f"Agent Text: {message_text}")
 
         response_dict = {
             'MessageText': message_text

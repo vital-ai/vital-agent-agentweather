@@ -19,11 +19,14 @@ logging.basicConfig(
 
 def create_app():
 
-    print('Hello Agent Weather')
+    logger = logging.getLogger("HaleyAgentLogger")
 
-    vs = VitalSigns()
+    logger.info('Hello Agent Weather')
 
-    print(f"VitalSigns Initialized.")
+    # don't init vitalsigns until after rest server starts so /health can respond right away
+    # vs = VitalSigns()
+
+    # logger.info(f"VitalSigns Initialized.")
 
     current_file_directory = os.path.dirname(os.path.abspath(__file__))
 
@@ -40,4 +43,4 @@ app = create_app()
 
 
 if __name__ == "__main__":
-    uvicorn.run(host="0.0.0.0", port=7007, app=app)
+    uvicorn.run(host="0.0.0.0", port=9009, app=app)

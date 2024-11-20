@@ -18,7 +18,7 @@ RUN mkdir -p /var/log/agentcontainer
 RUN chmod -R 755 /var/log/agentcontainer
 
 # Make port 7007 available to the world outside this container
-EXPOSE 7007
+EXPOSE 9009
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7007"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "9009"]
 

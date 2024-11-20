@@ -24,12 +24,17 @@ class AgentWeatherMessageHandler(AIMPMessageHandlerInf):
         self.app_home = app_home
         self.local_config = LocalConfig(app_home)
 
-    async def process_message(self, config, client: httpx.AsyncClient, websocket: WebSocket, data: str,
+    async def process_message(self,
+                              config,
+                              client: httpx.AsyncClient,
+                              websocket: WebSocket,
+                              data: str,
                               started_event: asyncio.Event):
 
         logger = logging.getLogger(__name__)
 
         try:
+
             logger.info(f"Handler Received Message: {data}")
 
             vs = VitalSigns()
@@ -43,6 +48,7 @@ class AgentWeatherMessageHandler(AIMPMessageHandlerInf):
                     logger.info(f"Object: {m}")
                     m_string = json.dumps(m)
                     go = vs.from_json(m_string)
+                    logger.info(f"Graph Object: {go.to_json()}")
                     message_list.append(go)
 
             except Exception as e:
@@ -81,9 +87,16 @@ class AgentWeatherMessageHandler(AIMPMessageHandlerInf):
                     intent_type = str(aimp_message.aIMPIntentType)
 
                     if intent_type == "http://vital.ai/ontology/vital-aimp#AIMPIntentType_CHAT":
-                        await self.agent.handle_chat_message(self.local_config,
-                                                             config, client, websocket, started_event,
-                                                             agent_context, agent_state, message_list)
+                        await self.agent.handle_chat_message(
+                            self.local_config,
+                            config,
+                            client,
+                            websocket,
+                            started_event,
+                            agent_context,
+                            agent_state,
+                            message_list)
+
                         return
 
             # handle unknown type
