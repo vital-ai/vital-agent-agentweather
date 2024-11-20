@@ -8,7 +8,7 @@ requests>=2.31.0
 httpx>=0.26.0
 starlette>=0.36.3
 vital-ai-haley-kg>=0.1.18
-vital-ai-aimp>=0.1.12
+vital-ai-aimp>=0.1.15
 vital-ai-chat>=0.1.16
 
 
