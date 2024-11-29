@@ -1,6 +1,5 @@
 import json
 import logging
-
 from com_vitalai_aimp_domain.model.AIMPIntent import AIMPIntent
 from com_vitalai_aimp_domain.model.AgentMessageContent import AgentMessageContent
 from com_vitalai_aimp_domain.model.UserMessageContent import UserMessageContent

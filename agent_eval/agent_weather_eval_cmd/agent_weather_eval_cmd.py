@@ -13,7 +13,7 @@ from vital_agent_container_client.vital_agent_container_client import VitalAgent
 from vital_ai_vitalsigns.utils.uri_generator import URIGenerator
 from vital_ai_vitalsigns.vitalsigns import VitalSigns
 
-from haley_agent_eval.haley_agent_eval_manager import HaleyAgentEvalManager
+from agent_eval.agent_weather_eval.agent_weather_eval_manager import HaleyAgentEvalManager
 
 
 class LocalMessageHandler(AIMPMessageHandlerInf):

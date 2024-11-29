@@ -173,12 +173,14 @@ class AgentImpl:
 
         logging_handler = LoggingHandler()
 
-        model_tools = ChatOpenAI(model="gpt-4o", callbacks=[logging_handler], temperature=0)
-        model_structured = ChatOpenAI(model="gpt-4o", callbacks=[logging_handler], temperature=0)
+        model_tools = ChatOpenAI(model_name="gpt-4o", callbacks=[logging_handler], temperature=0)
+        model_structured = ChatOpenAI(model_name="gpt-4o", callbacks=[logging_handler], temperature=0)
 
         # tool_endpoint = "http://localhost:8008"
 
-        tool_endpoint = "http://host.docker.internal:8008"
+        # tool_endpoint = "http://host.docker.internal:8008"
+
+        tool_endpoint = "http://vital-agent-resource-rest-lb.apichatai.com:8008"
 
         tool_config = {
             "tool_endpoint": tool_endpoint
@@ -272,10 +274,10 @@ class AgentImpl:
 
         for m in messages_out:
             t = type(m)
-            print(f"History ({t}): {m}")
+            logger.info(f"History ({t}): {m}")
 
         # there may be minor variants for cases of capturing knowledge graph objects
-        # objects for the UI, etc.
+        # such as objects for the UI, etc.
 
         tool_response_data_list = extract_tool_response_data(tool_manager, messages_out)
 
