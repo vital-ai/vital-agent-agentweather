@@ -61,7 +61,9 @@ class AgentWeatherMessageHandler(AIMPMessageHandlerInf):
                 session_id = str(aimp_message.sessionID)
 
                 account_id = str(aimp_message.accountURI)
+
                 login_id = str(aimp_message.userID)
+
                 username = str(aimp_message.username)
 
                 logger.info(f"Session ID: {session_id}")

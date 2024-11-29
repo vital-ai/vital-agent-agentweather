@@ -1,5 +1,4 @@
 import asyncio
-import json
 import logging
 import pprint
 from datetime import datetime
@@ -236,6 +235,7 @@ class AgentImpl:
                 These messages may contain prior tool requests and results.
                 These will be prefixed by "** AI Prior Tool" and contain JSON
                 You may use this information to know previous tool requests and results that occurred before this current interaction.
+                If you are reporting a date, you should include the day of week if possible.
                 You may format chat messages using markdown, such as for tables.
                 """
 
@@ -407,4 +407,3 @@ class AgentImpl:
         # print(f"Websocket closed.")
         started_event.set()
         logger.info(f"Completed Event.")
-

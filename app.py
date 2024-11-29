@@ -2,10 +2,11 @@ import logging
 import os
 import uvicorn
 from vital_agent_container.agent_container_app import AgentContainerApp
-from vital_ai_vitalsigns.vitalsigns import VitalSigns
 from dotenv import load_dotenv
 from agent_weather.agent.agent_impl import AgentImpl
 from agent_weather.agentweather_message_handler import AgentWeatherMessageHandler
+# from vital_ai_vitalsigns.vitalsigns import VitalSigns
+
 
 # Load environment variables from .env file
 load_dotenv()
