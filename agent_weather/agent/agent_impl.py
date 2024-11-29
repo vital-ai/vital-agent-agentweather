@@ -175,11 +175,7 @@ class AgentImpl:
         model_tools = ChatOpenAI(model_name="gpt-4o", callbacks=[logging_handler], temperature=0)
         model_structured = ChatOpenAI(model_name="gpt-4o", callbacks=[logging_handler], temperature=0)
 
-        # tool_endpoint = "http://localhost:8008"
-
-        # tool_endpoint = "http://host.docker.internal:8008"
-
-        tool_endpoint = "http://vital-agent-resource-rest-lb.apichatai.com:8008"
+        tool_endpoint = config["agent_weather"]["tool_endpoint"]
 
         tool_config = {
             "tool_endpoint": tool_endpoint
@@ -221,7 +217,7 @@ class AgentImpl:
 
         pp = pprint.PrettyPrinter(indent=4, width=40)
 
-        config = {"configurable": {"thread_id": "urn:thread_1"}}
+        graph_config = {"configurable": {"thread_id": "urn:thread_1"}}
 
         today = datetime.now(ZoneInfo('America/New_York'))
 
@@ -270,7 +266,7 @@ class AgentImpl:
 
         messages_out = []
 
-        agent_status_response = await process_stream(graph.astream(inputs, config, stream_mode="values"), messages_out)
+        agent_status_response = await process_stream(graph.astream(inputs, graph_config, stream_mode="values"), messages_out)
 
         for m in messages_out:
             t = type(m)

@@ -1,7 +1,5 @@
 
 agent_weather:
-  weather_key: 123
-
-      
-
+  weather_api_key: 123
+  tool_endpoint: "http://host.docker.internal:8008"
 
